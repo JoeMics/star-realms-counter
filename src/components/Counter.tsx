@@ -4,13 +4,14 @@ import { useState } from 'react';
 import { CircleChevronLeftIcon, CircleChevronRightIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import HealthBar from '@/components/HealthBar';
+import CombatBar from './CombatBar';
 
 // Props: title, color
 export default function Counter() {
   const [startingHealth, setStartingHealth] = useState(50);
   const [health, setHealth] = useState(startingHealth);
   const [healthModifier, setHealthModifier] = useState(0);
-  const [damage, setDamage] = useState(0);
+  const [combat, setCombat] = useState(0);
   const [money, setMoney] = useState(0);
 
   function decrementOnce(number: number) {
@@ -31,7 +32,7 @@ export default function Counter() {
 
   function finishTurn() {
     setHealthModifier(0);
-    setDamage(0);
+    setCombat(0);
     setMoney(0);
   }
 
@@ -67,22 +68,21 @@ export default function Counter() {
         Finish Turn
       </Button>
 
-      <h2 className='mx-auto my-0 text-3xl font-semibold opacity-80'>Damage</h2>
       <div className='mx-auto my-0 flex items-center justify-center'>
         <Button
-          variant='outline'
+          variant='ghost'
           size='icon'
-          onClick={() => setDamage(damage - 1)}
+          onClick={() => setCombat(decrementOnce(combat))}
         >
-          {'<'}
+          <CircleChevronLeftIcon className='h-8 w-8' />
         </Button>
-        <h3 className='mx-4 text-8xl text-red-600'>{damage}</h3>
+        <CombatBar combat={combat}></CombatBar>
         <Button
-          variant='outline'
+          variant='ghost'
           size='icon'
-          onClick={() => setDamage(damage + 1)}
+          onClick={() => setCombat(combat + 1)}
         >
-          {'>'}
+          <CircleChevronRightIcon className='h-8 w-8' />
         </Button>
       </div>
 

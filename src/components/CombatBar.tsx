@@ -12,22 +12,14 @@ import { ChartConfig, ChartContainer } from './ui/chart';
 
 const chartConfig = {
   health: {
-    label: 'Health',
-    color: 'hsl(var(--chart-2))',
+    label: 'Combat',
+    color: '#b91c1c',
   },
 } satisfies ChartConfig;
 
-export default function HealthBar({
-  health,
-  startingHealth,
-  healthModifier,
-}: {
-  health: number;
-  startingHealth: number;
-  healthModifier: number;
-}) {
-  const chartData = [{ health: health, fill: 'var(--color-health)' }];
-  const barLength = (health / startingHealth) * 360;
+export default function CombatBar({ combat }: { combat: number }) {
+  const chartData = [{ combat, fill: 'var(--color-health)' }];
+  const barLength = (combat / 20) * 360;
 
   return (
     <ChartContainer
@@ -49,7 +41,7 @@ export default function HealthBar({
           polarRadius={[82, 68]}
         />
         <RadialBar
-          dataKey='health'
+          dataKey='combat'
           cornerRadius={10}
           animationDuration={200}
           animationEasing='ease-in-out'
@@ -82,26 +74,16 @@ export default function HealthBar({
                     <tspan
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className='fill-green-500 text-6xl font-bold'
+                      className='fill-red-700 text-6xl font-bold'
                     >
-                      {chartData && chartData[0].health.toLocaleString()}
+                      {chartData && chartData[0].combat.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 30}
                       className='fill-muted-foreground text-base'
                     >
-                      Authority
-                    </tspan>
-
-                    <tspan
-                      x={viewBox.cx}
-                      y={(viewBox.cy || 0) + 50}
-                      className={`text-sm font-bold ${healthModifier >= 0 ? 'fill-green-500' : 'fill-red-500'} ${healthModifier === 0 && 'hidden'}`}
-                    >
-                      {healthModifier > 0
-                        ? '+' + healthModifier
-                        : healthModifier}
+                      Combat
                     </tspan>
                   </text>
                 );
