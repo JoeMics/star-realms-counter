@@ -11,14 +11,14 @@ import {
 import { ChartConfig, ChartContainer } from './ui/chart';
 
 const chartConfig = {
-  health: {
+  combat: {
     label: 'Combat',
     color: '#b91c1c',
   },
 } satisfies ChartConfig;
 
 export default function CombatBar({ combat }: { combat: number }) {
-  const chartData = [{ combat, fill: 'var(--color-health)' }];
+  const chartData = [{ combat, fill: 'var(--color-combat)' }];
   const barLength = (combat / 20) * 360;
 
   return (
