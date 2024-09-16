@@ -49,7 +49,7 @@ export default function Counter() {
         </Button>
         <AuthorityBar
           authority={authority}
-          startingAuthorityy={startingAuthority}
+          startingAuthority={startingAuthority}
           authorityModifier={authorityModifier}
         ></AuthorityBar>
         <Button
