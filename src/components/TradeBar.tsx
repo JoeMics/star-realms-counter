@@ -11,15 +11,15 @@ import {
 import { ChartConfig, ChartContainer } from './ui/chart';
 
 const chartConfig = {
-  combat: {
-    label: 'Combat',
-    color: '#b91c1c',
+  trade: {
+    label: 'Trade',
+    color: 'hsl(var(--chart-3))',
   },
 } satisfies ChartConfig;
 
-export default function CombatBar({ combat }: { combat: number }) {
-  const chartData = [{ combat, fill: 'var(--color-combat)' }];
-  const barLength = (combat / 20) * 360;
+export default function TradeBar({ trade }: { trade: number }) {
+  const chartData = [{ trade, fill: 'var(--color-trade)' }];
+  const barLength = (trade / 20) * 360;
 
   return (
     <ChartContainer
@@ -41,7 +41,7 @@ export default function CombatBar({ combat }: { combat: number }) {
           polarRadius={[82, 68]}
         />
         <RadialBar
-          dataKey='combat'
+          dataKey='trade'
           cornerRadius={10}
           animationDuration={500}
           animationEasing='ease-in-out'
@@ -74,16 +74,16 @@ export default function CombatBar({ combat }: { combat: number }) {
                     <tspan
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className='fill-red-700 text-6xl font-bold'
+                      className='fill-yellow-600 text-6xl font-bold'
                     >
-                      {chartData && chartData[0].combat.toLocaleString()}
+                      {chartData && chartData[0].trade.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 30}
                       className='fill-muted-foreground text-base'
                     >
-                      Combat
+                      Trade
                     </tspan>
                   </text>
                 );
