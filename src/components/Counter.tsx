@@ -48,10 +48,10 @@ export default function Counter() {
         </Button>
       </div>
 
-      <h2 className='mx-auto my-0 text-3xl font-semibold opacity-80'>Damage</h2>
+      <h2 className='mx-auto my-0 text-3xl font-semibold opacity-80'>Money</h2>
       <div className='mx-auto my-0 flex items-center justify-center'>
         <Button
-          variant='outline'
+          variant='ghost'
           size='icon'
           onClick={() => setMoney(money - 1)}
         >
@@ -59,7 +59,7 @@ export default function Counter() {
         </Button>
         <h3 className='mx-4 text-8xl text-yellow-600'>{money}</h3>
         <Button
-          variant='outline'
+          variant='ghost'
           size='icon'
           onClick={() => setMoney(money + 1)}
         >
