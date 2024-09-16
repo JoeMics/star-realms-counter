@@ -3,15 +3,15 @@
 import { useState } from 'react';
 import { CircleChevronLeftIcon, CircleChevronRightIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import HealthBar from '@/components/HealthBar';
+import AuthorityBar from '@/components/AuthorityBar';
 import CombatBar from '@/components/CombatBar';
 import TradeBar from '@/components/TradeBar';
 
 // Props: title, color
 export default function Counter() {
-  const [startingHealth, setStartingHealth] = useState(50);
-  const [health, setHealth] = useState(startingHealth);
-  const [healthModifier, setHealthModifier] = useState(0);
+  const [startingAuthority, setStartingAuthority] = useState(50);
+  const [authority, setAuthority] = useState(startingAuthority);
+  const [authorityModifier, setAuthorityModifier] = useState(0);
   const [combat, setCombat] = useState(0);
   const [trade, setTrade] = useState(0);
 
@@ -20,19 +20,19 @@ export default function Counter() {
   }
 
   function decrementHealth() {
-    if (health > 0) {
-      setHealth(decrementOnce(health));
-      setHealthModifier(healthModifier - 1);
+    if (authority > 0) {
+      setAuthority(decrementOnce(authority));
+      setAuthorityModifier(authorityModifier - 1);
     }
   }
 
   function incrementHealth() {
-    setHealth(health + 1);
-    setHealthModifier(healthModifier + 1);
+    setAuthority(authority + 1);
+    setAuthorityModifier(authorityModifier + 1);
   }
 
   function finishTurn() {
-    setHealthModifier(0);
+    setAuthorityModifier(0);
     setCombat(0);
     setTrade(0);
   }
@@ -47,11 +47,11 @@ export default function Counter() {
         >
           <CircleChevronLeftIcon className='h-8 w-8' />
         </Button>
-        <HealthBar
-          health={health}
-          startingHealth={startingHealth}
-          healthModifier={healthModifier}
-        ></HealthBar>
+        <AuthorityBar
+          authority={authority}
+          startingAuthorityy={startingAuthority}
+          authorityModifier={authorityModifier}
+        ></AuthorityBar>
         <Button
           variant='ghost'
           size='icon'

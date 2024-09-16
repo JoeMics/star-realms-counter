@@ -11,23 +11,23 @@ import {
 import { ChartConfig, ChartContainer } from './ui/chart';
 
 const chartConfig = {
-  health: {
-    label: 'Health',
+  authority: {
+    label: 'Authority',
     color: 'hsl(var(--chart-2))',
   },
 } satisfies ChartConfig;
 
-export default function HealthBar({
-  health,
-  startingHealth,
-  healthModifier,
+export default function AuthorityBar({
+  authority,
+  startingAuthority,
+  authorityModifier,
 }: {
-  health: number;
-  startingHealth: number;
-  healthModifier: number;
+  authority: number;
+  startingAuthority: number;
+  authorityModifier: number;
 }) {
-  const chartData = [{ health: health, fill: 'var(--color-health)' }];
-  const barLength = (health / startingHealth) * 360;
+  const chartData = [{ authority, fill: 'var(--color-authority)' }];
+  const barLength = (authority / startingAuthority) * 360;
 
   return (
     <ChartContainer
@@ -49,7 +49,7 @@ export default function HealthBar({
           polarRadius={[82, 68]}
         />
         <RadialBar
-          dataKey='health'
+          dataKey='authority'
           cornerRadius={10}
           animationDuration={200}
           animationEasing='ease-in-out'
@@ -84,7 +84,7 @@ export default function HealthBar({
                       y={viewBox.cy}
                       className='fill-green-500 text-6xl font-bold'
                     >
-                      {chartData && chartData[0].health.toLocaleString()}
+                      {chartData && chartData[0].authority.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
@@ -97,11 +97,11 @@ export default function HealthBar({
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 50}
-                      className={`text-sm font-bold ${healthModifier >= 0 ? 'fill-green-500' : 'fill-red-500'} ${healthModifier === 0 && 'hidden'}`}
+                      className={`text-sm font-bold ${authorityModifier >= 0 ? 'fill-green-500' : 'fill-red-500'} ${authorityModifier === 0 && 'hidden'}`}
                     >
-                      {healthModifier > 0
-                        ? '+' + healthModifier
-                        : healthModifier}
+                      {authorityModifier > 0
+                        ? '+' + authorityModifier
+                        : authorityModifier}
                     </tspan>
                   </text>
                 );
