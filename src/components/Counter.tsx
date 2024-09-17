@@ -30,7 +30,7 @@ export default function Counter() {
   function decrementHealth(amount: number) {
     const newAmount = decrementAmount(amount, authority);
     setAuthority(newAmount);
-    setAuthorityModifier(newAmount);
+    setAuthorityModifier(authorityModifier - (authority - newAmount));
   }
 
   function incrementHealth(amount: number) {
@@ -109,39 +109,103 @@ export default function Counter() {
       </Button>
 
       <div className='mx-auto my-0 flex items-center justify-center'>
-        <Button
-          variant='ghost'
-          size='icon'
-          onClick={() => setCombat(decrementAmount(1, combat))}
-        >
-          <CircleChevronLeftIcon className='h-8 w-8' />
-        </Button>
+        <div className='flex flex-col'>
+          <Button
+            variant='outline'
+            className='border-2 text-lg'
+            onClick={() => setCombat(decrementAmount(5, combat))}
+          >
+            -5
+          </Button>
+          <Button
+            variant='outline'
+            className='my-4 border-2 text-lg'
+            onClick={() => setCombat(decrementAmount(3, combat))}
+          >
+            -3
+          </Button>
+          <Button
+            variant='outline'
+            className='border-2 text-lg font-extrabold'
+            onClick={() => setCombat(decrementAmount(1, combat))}
+          >
+            -1
+          </Button>
+        </div>
         <CombatBar combat={combat}></CombatBar>
-        <Button
-          variant='ghost'
-          size='icon'
-          onClick={() => setCombat(combat + 1)}
-        >
-          <CircleChevronRightIcon className='h-8 w-8' />
-        </Button>
+        <div className='flex flex-col'>
+          <Button
+            variant='outline'
+            className='border-2 text-lg'
+            onClick={() => setCombat(combat + 5)}
+          >
+            +5
+          </Button>
+          <Button
+            variant='outline'
+            className='my-4 border-2 text-lg'
+            onClick={() => setCombat(combat + 3)}
+          >
+            +3
+          </Button>
+          <Button
+            variant='outline'
+            className='border-2 text-lg'
+            onClick={() => setCombat(combat + 1)}
+          >
+            +1
+          </Button>
+        </div>
       </div>
 
       <div className='mx-auto my-0 flex items-center justify-center'>
-        <Button
-          variant='ghost'
-          size='icon'
-          onClick={() => setTrade(decrementAmount(1, trade))}
-        >
-          <CircleChevronLeftIcon className='h-8 w-8' />
-        </Button>
+        <div className='flex flex-col'>
+          <Button
+            variant='outline'
+            className='border-2 text-lg'
+            onClick={() => setTrade(decrementAmount(5, trade))}
+          >
+            -5
+          </Button>
+          <Button
+            variant='outline'
+            className='my-4 border-2 text-lg'
+            onClick={() => setTrade(decrementAmount(3, trade))}
+          >
+            -3
+          </Button>
+          <Button
+            variant='outline'
+            className='border-2 text-lg font-extrabold'
+            onClick={() => setTrade(decrementAmount(1, trade))}
+          >
+            -1
+          </Button>
+        </div>
         <TradeBar trade={trade}></TradeBar>
-        <Button
-          variant='ghost'
-          size='icon'
-          onClick={() => setTrade(trade + 1)}
-        >
-          <CircleChevronRightIcon className='h-8 w-8' />
-        </Button>
+        <div className='flex flex-col'>
+          <Button
+            variant='outline'
+            className='border-2 text-lg'
+            onClick={() => setTrade(trade + 5)}
+          >
+            +5
+          </Button>
+          <Button
+            variant='outline'
+            className='my-4 border-2 text-lg'
+            onClick={() => setTrade(trade + 3)}
+          >
+            +3
+          </Button>
+          <Button
+            variant='outline'
+            className='border-2 text-lg font-extrabold'
+            onClick={() => setTrade(trade + 1)}
+          >
+            +1
+          </Button>
+        </div>
       </div>
     </>
   );
