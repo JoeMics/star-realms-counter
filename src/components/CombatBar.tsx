@@ -19,7 +19,7 @@ const chartConfig = {
 
 export default function CombatBar({ combat }: { combat: number }) {
   const chartData = [{ combat, fill: 'var(--color-combat)' }];
-  const barLength = (combat / 20) * 360;
+  const barLength = 180 - 360 * (combat / 20);
 
   return (
     <ChartContainer
@@ -28,7 +28,7 @@ export default function CombatBar({ combat }: { combat: number }) {
     >
       <RadialBarChart
         data={chartData}
-        startAngle={0}
+        startAngle={180}
         endAngle={barLength}
         innerRadius={75}
         outerRadius={115}

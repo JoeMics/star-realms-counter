@@ -19,7 +19,7 @@ const chartConfig = {
 
 export default function TradeBar({ trade }: { trade: number }) {
   const chartData = [{ trade, fill: 'var(--color-trade)' }];
-  const barLength = (trade / 20) * 360;
+  const barLength = 180 - 360 * (trade / 20);
 
   return (
     <ChartContainer
@@ -28,7 +28,7 @@ export default function TradeBar({ trade }: { trade: number }) {
     >
       <RadialBarChart
         data={chartData}
-        startAngle={0}
+        startAngle={180}
         endAngle={barLength}
         innerRadius={75}
         outerRadius={115}

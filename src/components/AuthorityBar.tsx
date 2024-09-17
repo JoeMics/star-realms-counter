@@ -27,7 +27,7 @@ export default function AuthorityBar({
   authorityModifier: number;
 }) {
   const chartData = [{ authority, fill: 'var(--color-authority)' }];
-  const barLength = (authority / startingAuthority) * 360;
+  const barLength = 180 - 360 * (authority / startingAuthority);
 
   return (
     <ChartContainer
@@ -36,7 +36,7 @@ export default function AuthorityBar({
     >
       <RadialBarChart
         data={chartData}
-        startAngle={0}
+        startAngle={180}
         endAngle={barLength}
         innerRadius={75}
         outerRadius={115}
