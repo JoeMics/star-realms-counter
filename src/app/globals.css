@@ -81,3 +81,17 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Allow fullscreen scrolling */
+body:fullscreen {
+  overflow-y: scroll !important;
+}
+body:-ms-fullscreen {
+  overflow-y: scroll !important;
+}
+body:-webkit-full-screen {
+  overflow-y: scroll !important;
+}
+body:-moz-full-screen {
+  overflow-y: scroll !important;
+}
