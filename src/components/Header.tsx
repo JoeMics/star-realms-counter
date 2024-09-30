@@ -102,7 +102,10 @@ export default function Header(props: {
               <Settings />
             </Button>
           </DialogTrigger>
-          <DialogContent className='sm:max-w-"[500px]'>
+          <DialogContent
+            className='sm:max-w-"[500px]'
+            onOpenAutoFocus={(e) => e.preventDefault()}
+          >
             <DialogHeader>
               <DialogTitle>Settings</DialogTitle>
             </DialogHeader>
