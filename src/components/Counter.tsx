@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { CircleChevronLeftIcon, CircleChevronRightIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AuthorityBar from '@/components/AuthorityBar';
 import CombatBar from '@/components/CombatBar';
