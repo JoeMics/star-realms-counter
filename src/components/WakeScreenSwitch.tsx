@@ -11,6 +11,9 @@ export default function WakeScreenSwitch() {
     if (e) {
       try {
         wakeLock.current = await navigator.wakeLock.request('screen');
+        wakeLock.current.addEventListener('release', () =>
+          setWakeScreen(false),
+        );
       } catch (e) {
         console.error(e);
       }
