@@ -5,6 +5,7 @@ import AuthorityBar from '@/components/AuthorityBar';
 import CombatBar from '@/components/CombatBar';
 import TradeBar from '@/components/TradeBar';
 import Header from '@/components/Header';
+import WakeScreenSwitch from '@/components/WakeScreenSwitch';
 
 export default function Home() {
   const [startingAuthority, setStartingAuthority] = useState(50);
@@ -216,6 +217,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
+        <WakeScreenSwitch />
       </main>
     </>
   );
