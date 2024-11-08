@@ -107,9 +107,9 @@ export default function Header(props: {
             onOpenAutoFocus={(e) => e.preventDefault()}
           >
             <DialogHeader>
-              <DialogTitle>Settings</DialogTitle>
+              <DialogTitle>Game Settings</DialogTitle>
               <DialogDescription>
-                Change timer settings according to your game.
+                Change the values according to your game.
               </DialogDescription>
             </DialogHeader>
             <Form {...form}>
