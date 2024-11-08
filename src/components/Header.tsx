@@ -12,7 +12,7 @@ import { Input } from './ui/input';
 import { z } from 'zod';
 import { Fullscreen, Rocket, Settings } from 'lucide-react';
 import { MouseEventHandler, useEffect, useState } from 'react';
-import { DialogTitle } from '@radix-ui/react-dialog';
+import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -105,6 +105,9 @@ export default function Header(props: {
           <DialogContent className='sm:max-w-"[500px]'>
             <DialogHeader>
               <DialogTitle>Settings</DialogTitle>
+              <DialogDescription>
+                Change timer settings according to your game.
+              </DialogDescription>
             </DialogHeader>
             <Form {...form}>
               <form
