@@ -43,17 +43,13 @@ export default function Home() {
     setTrade(0);
   }
 
-  function resetGame() {
-    setAuthority(startingAuthority);
-    finishTurn();
-  }
-
   return (
     <>
       <Header
         setStartingAuthority={setStartingAuthority}
         startingAuthority={startingAuthority}
-        onResetClick={resetGame}
+        setAuthority={setAuthority}
+        finishTurn={finishTurn}
       />
       <main className='row-start-2 flex flex-col items-center justify-items-center gap-8'>
         <div className='mx-auto my-0 flex items-center justify-center'>
