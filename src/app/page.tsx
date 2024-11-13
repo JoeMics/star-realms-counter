@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import AuthorityBar from '@/components/AuthorityBar';
 import CombatBar from '@/components/CombatBar';
@@ -8,17 +8,49 @@ import Header from '@/components/Header';
 import WakeScreenSwitch from '@/components/WakeScreenSwitch';
 
 export default function Home() {
-  const [startingAuthority, setStartingAuthority] = useState(50);
-  const [authority, setAuthority] = useState(startingAuthority);
+  const [startingAuthority, setStartingAuthority] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedStartingAuthority = localStorage.getItem('startingAuthority');
+      if (savedStartingAuthority) {
+        return JSON.parse(savedStartingAuthority);
+      } else {
+        return 50;
+      }
+    }
+  });
+
+  const [authority, setAuthority] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedAuthority = localStorage.getItem('authority');
+      if (savedAuthority) {
+        return JSON.parse(savedAuthority);
+      } else {
+        return startingAuthority;
+      }
+    }
+  });
+
   const [authorityModifier, setAuthorityModifier] = useState(0);
   const [combat, setCombat] = useState(0);
   const [trade, setTrade] = useState(0);
+
+  // Save authority counts to localStorage on change
+  useEffect(() => {
+    localStorage.setItem(
+      'startingAuthority',
+      JSON.stringify(startingAuthority),
+    );
+    localStorage.setItem('authority', JSON.stringify(authority));
+  }, [authority, startingAuthority]);
 
   /**
    * Returns value of a counter after being reduced by a certain amount.
    * Prevents the returned value from going into the negative
    */
-  function decrementAmount(amount: number, currentCounterAmount: number): number {
+  function decrementAmount(
+    amount: number,
+    currentCounterAmount: number,
+  ): number {
     if (currentCounterAmount < amount) {
       return 0;
     }
