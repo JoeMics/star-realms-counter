@@ -69,6 +69,7 @@ export default function Header(props: {
   function onFormSubmit(values: z.infer<typeof formSchema>) {
     props.setStartingAuthority(values.startingAuthority);
     props.setAuthority(values.startingAuthority);
+		props.finishTurn();
     setOpen(false);
   }
 
