@@ -18,7 +18,7 @@ export default function Home() {
    * Returns value of a counter after being reduced by a certain amount.
    * Prevents the returned value from going into the negative
    */
-  function decrementAmount(amount: number, currentCounterAmount: number) {
+  function decrementAmount(amount: number, currentCounterAmount: number): number {
     if (currentCounterAmount < amount) {
       return 0;
     }
@@ -26,18 +26,18 @@ export default function Home() {
     return currentCounterAmount - amount;
   }
 
-  function decrementHealth(amount: number) {
+  function decrementHealth(amount: number): void {
     const newAmount = decrementAmount(amount, authority);
     setAuthority(newAmount);
     setAuthorityModifier(authorityModifier - (authority - newAmount));
   }
 
-  function incrementHealth(amount: number) {
+  function incrementHealth(amount: number): void {
     setAuthority(authority + amount);
     setAuthorityModifier(authorityModifier + amount);
   }
 
-  function finishTurn() {
+  function finishTurn(): void {
     setAuthorityModifier(0);
     setCombat(0);
     setTrade(0);
